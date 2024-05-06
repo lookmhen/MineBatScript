@@ -1,0 +1,1 @@
+reg export HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Shares "D:\%computername% -sharebackup".reg

@@ -1,0 +1,14 @@
+@echo off
+
+rem Delete EN-GB
+for %%w in (en-GB) do ^
+powershell -c "$ll=Get-WinUserLanguageList; $ll.remove(($ll |? LanguageTag -like '%%w')); Set-WinUserLanguageList $ll -force;" & ^
+rem Add TH
+for %%q in (en-US th) do ^
+powershell -c "$ll=Get-WinUserLanguageList; $ll.add('%%q'); Set-WinUserLanguageList $ll -force;"
+
+rem Delete WiFi IT
+netsh wlan delete profile name=IT
+
+rem Run Script 5.Network_Sharing.vbs
+cscript D:\setting-windows\script\5.Network_Sharing.vbs
